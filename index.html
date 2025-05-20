@@ -204,70 +204,82 @@
 </section>
 
 
-
 </section>
-<!-- Location with Suggestions -->
-<!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content p-3">
-      <div class="modal-header">
-        <h5 class="modal-title" id="searchModalLabel">Search Hotels</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+<!-- Search Modal Section -->
+<section>
+  <!-- Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> <!-- Wide Modal -->
+      <div class="modal-content p-3">
 
-      <div class="modal-body position-relative">
-        <label for="location" class="form-label fw-bold">Where to?</label>
-        <input type="text" class="form-control" id="location" placeholder="Enter destination" autocomplete="off" 
-               onfocus="showSuggestions()" onblur="hideSuggestions()">
-
-        <div id="locationSuggestions" class="position-absolute bg-white shadow rounded mt-1 p-3" style="width: 100%; display: none; z-index: 1050; max-height: 250px; overflow-y: auto;">
-          <h6 class="fw-bold mb-3 border-bottom pb-2">Popular destinations</h6>
-
-          <div class="mb-2 d-flex align-items-start">
-            <i class="bi bi-geo-alt text-primary me-2 fs-5 mt-1"></i>
-            <div>
-              <div class="fw-semibold">Nagpur</div>
-              <small class="text-muted">City · Maharashtra, India</small>
-            </div>
-          </div>
-
-          <div class="mb-2 d-flex align-items-start">
-            <i class="bi bi-geo-alt text-primary me-2 fs-5 mt-1"></i>
-            <div>
-              <div class="fw-semibold">Jabalpur</div>
-              <small class="text-muted">City · Madhya Pradesh, India</small>
-            </div>
-          </div>
-
-          <div class="mb-2 d-flex align-items-start">
-            <i class="bi bi-geo-alt text-primary me-2 fs-5 mt-1"></i>
-            <div>
-              <div class="fw-semibold">Bilaspur</div>
-              <small class="text-muted">City · Chhattisgarh, India</small>
-            </div>
-          </div>
-
-          <div class="mb-2 d-flex align-items-start">
-            <i class="bi bi-geo-alt text-primary me-2 fs-5 mt-1"></i>
-            <div>
-              <div class="fw-semibold">Sambalpur</div>
-              <small class="text-muted">City · Odisha, India</small>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-start">
-            <i class="bi bi-bank text-danger me-2 fs-5 mt-1"></i>
-            <div>
-              <div class="fw-semibold">Kanha National Park, Mandla</div>
-              <small class="text-muted">Other Places of Interest · Mandla, India</small>
-            </div>
-          </div>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Search Hotels</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="row g-3 align-items-end">
+
+            <!-- Location -->
+            <div class="col-md-3">
+              <label for="location" class="form-label fw-bold">Where to?</label>
+              <input type="text" class="form-control" id="location" placeholder="Enter destination"
+                onfocus="showSuggestions()" onblur="hideSuggestions()" autocomplete="off">
+              <!-- Suggestions -->
+              <div id="locationSuggestions"
+                class="position-absolute bg-white shadow rounded mt-1 p-3"
+                style="width: 100%; display: none; z-index: 1050; max-height: 250px; overflow-y: auto;">
+                <h6 class="fw-bold mb-3 border-bottom pb-2">Popular destinations</h6>
+                <div class="d-flex align-items-start mb-2">
+                  <i class="bi bi-geo-alt text-primary me-2 fs-5 mt-1"></i>
+                  <div><div class="fw-semibold">Nagpur</div><small class="text-muted">Maharashtra</small></div>
+                </div>
+                <div class="d-flex align-items-start mb-2">
+                  <i class="bi bi-geo-alt text-primary me-2 fs-5 mt-1"></i>
+                  <div><div class="fw-semibold">Jabalpur</div><small class="text-muted">Madhya Pradesh</small></div>
+                </div>
+                <!-- Add more as needed -->
+              </div>
+            </div>
+
+            <!-- Check-in -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Check in</label>
+              <input type="date" class="form-control" />
+            </div>
+
+            <!-- Check-out -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Check out</label>
+              <input type="date" class="form-control" />
+            </div>
+
+            <!-- Guests -->
+            <div class="col-md-3">
+              <label class="form-label fw-bold">Guests & Rooms</label>
+              <select class="form-select">
+                <option selected>2 Guests, 1 Room</option>
+                <option>1 Guest, 1 Room</option>
+                <option>3 Guests, 1 Room</option>
+              </select>
+            </div>
+
+            <!-- Search Button -->
+            <div class="col-md-2 d-grid">
+              <button class="btn btn-primary">Search</button>
+            </div>
+
+          </div>
+        </div> <!-- modal-body -->
+
+      </div> <!-- modal-content -->
+    </div> <!-- modal-dialog -->
+  </div> <!-- modal -->
+</section>
+
+
 
 
 
@@ -463,6 +475,16 @@
 
 <!-- Footer -->
 
+<script>
+  function showSuggestions() {
+    document.getElementById('locationSuggestions').style.display = 'block';
+  }
+  function hideSuggestions() {
+    setTimeout(() => {
+      document.getElementById('locationSuggestions').style.display = 'none';
+    }, 200);
+  }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
